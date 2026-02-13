@@ -23,7 +23,7 @@ yesBtn.addEventListener("click", () => {
 
     // Open email draft after short delay
     setTimeout(() => {
-        const email = "fromyourboyfriend@baby.com"; // <-- replace with her email
+        const email = "fromyourboyfriend@mwamwa.com"; // <-- replace with her email
         const subject = encodeURIComponent("Be my Valentine Date");
         const body = encodeURIComponent(
             "Hi Luna,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nI miss you Luna, -Luis"
@@ -155,5 +155,6 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
 
