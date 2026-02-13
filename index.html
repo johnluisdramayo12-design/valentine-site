@@ -11,16 +11,15 @@
 
 <body>
 
-    <!-- Floating hearts container -->
-    <div id="hearts-container"></div>
-
     <!-- Background Music -->
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" preload="auto" loop>
         <source src="music/love.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Music Toggle Button -->
-    <button id="musicBtn"></button>
+    <!-- Text initialized here so it always shows -->
+    <button id="musicBtn">Music OFF 🔇</button>
+
 
     <!-- MAIN QUESTION -->
     <section class="hero">
@@ -34,14 +33,16 @@
         <p id="response"></p>
     </section>
 
+
     <!-- SLIDESHOW -->
     <section class="slideshow-section">
         <h2>With My Baby 🥰</h2>
 
         <div class="slideshow">
             <img id="slide" src="images/photo1.jpg" alt="memory">
-            <!-- Short message below image -->
-            <p id="slideText" class="slide-text">Our sweet moment 💖 – Feb 17–18</p>
+            <p id="slideText" class="slide-text">
+                Our sweet moment 💖 – Feb 17–18
+            </p>
 
             <div class="controls">
                 <button onclick="prevSlide()">⬅ Prev</button>
@@ -50,83 +51,34 @@
         </div>
     </section>
 
-    <!-- POP-UP CARD -->
-    <div id="popupCard" class="popup-card">
-        <div class="card-content">
-            <h2>💌 Surpriseeee!!! 💌</h2>
-            <p>Hi Luna 🥰,<br>Excited to see you on February 17-18!<br>Can't wait for our Valentine date hehe 🥰</p>
-            <button id="closeCard">Close</button>
+
+    <!-- POPUP CARD -->
+    <div id="popupCard">
+        <div id="popupContent">
+            <button id="closeCard">✖</button>
+
+            <h2>💌 Valentine's Date Confirmed 💌</h2>
+
+            <p>
+                Hi Luna 🥰 <br><br>
+                Thank you for saying YES ❤️ <br>
+                I'm really excited to spend time with you.
+            </p>
+
+            <p>
+                📅 Date: February 17–18, 2026 <br>
+                ⏰ Time: Whole day together 😌
+            </p>
+
+            <p>
+                Can't wait to see you 💕
+            </p>
         </div>
     </div>
 
-    <!-- Script -->
+
+    <!-- Main Script ONLY -->
     <script src="script.js"></script>
-
-    <!-- NO button movement & YES pop-up / email -->
-    <script>
-        const noBtn = document.getElementById("noBtn");
-        const yesBtn = document.getElementById("yesBtn");
-        const response = document.getElementById("response");
-
-        const popupCard = document.getElementById("popupCard");
-        const closeCard = document.getElementById("closeCard");
-
-        // NO button functions
-        function moveNoButton() {
-            const btnWidth = noBtn.offsetWidth;
-            const btnHeight = noBtn.offsetHeight;
-            const maxX = window.innerWidth - btnWidth - 20;
-            const maxY = window.innerHeight - btnHeight - 20;
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        }
-
-        function playfulNoText() {
-            const originalText = noBtn.textContent;
-            noBtn.textContent = "Not so fast! 🤣🤣🤣";
-            setTimeout(() => {
-                noBtn.textContent = originalText;
-            }, 1000);
-        }
-
-        noBtn.addEventListener("mouseover", () => {
-            moveNoButton();
-            playfulNoText();
-        });
-
-        noBtn.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            moveNoButton();
-            playfulNoText();
-        });
-
-        // YES button function: show popup card + email
-        yesBtn.addEventListener("click", () => {
-            response.innerHTML = "Yeheyyy!! ❤️ See you baby sa February 17-18";
-            
-            // Show popup card
-            popupCard.style.display = "flex";
-
-            // Open email draft after slight delay
-            setTimeout(() => {
-                const email = "yourgirlfriend@example.com"; // replace with her email
-                const subject = encodeURIComponent("My Valentine Date 😍");
-                const body = encodeURIComponent(
-                    "Hi baby 💖,\n\nExcited to see you on February 17-18! Can't wait for our Valentine date ❤️\n\nLove, [Your Name]"
-                );
-                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-            }, 500); // 0.5s delay to see card popup
-        });
-
-        // Close popup card
-        closeCard.addEventListener("click", () => {
-            popupCard.style.display = "none";
-        });
-    </script>
 
 </body>
 </html>
-
