@@ -105,7 +105,7 @@ function prevSlide() {
 }
 
 // Auto-play slideshow
-setInterval(nextSlide, 500);
+setInterval(nextSlide, 10000);
 
 // Initialize first slide
 updateSlide();
@@ -155,6 +155,7 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
 
 
