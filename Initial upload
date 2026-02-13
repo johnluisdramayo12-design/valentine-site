@@ -2,6 +2,7 @@ valentine-site
 ├── index.html
 ├── style.css
 ├── script.js
+├── music/
 ├── images/
 │   ├── photo1.jpg
 │   ├── photo2.jpg
