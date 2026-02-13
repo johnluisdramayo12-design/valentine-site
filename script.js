@@ -26,7 +26,7 @@ yesBtn.addEventListener("click", () => {
         const email = "fromyourboyfriend@mwamwa.com"; // <-- replace with her email
         const subject = encodeURIComponent("Be my Valentine Date");
         const body = encodeURIComponent(
-            "Hi Luna,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nI miss you Luna, -Luis"
+            "Hi Luna,\n\nSee you sa February 17-18 po 😍 I’ve been planning something special for us… a dinner date hehe🥰 \n I really wanna spend time with you this month of February, kasi it’s our monthsary too, Happy monthsary, baby! 🥰\n I really wanna spend time with you this month of February, kasi it’s our monthsary too, Happy monthsary, baby! 🥰\n I hope you can say yes, kasi I really wanna make this day super special for us. Can’t wait to see you po and spend some quality time together 😘 \n\nI miss you Luna, -Luis"
         );
         window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }, 500);
@@ -155,6 +155,7 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
 
 
