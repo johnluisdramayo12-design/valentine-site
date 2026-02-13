@@ -1,164 +1,178 @@
-// Wait until DOM fully loads
-document.addEventListener("DOMContentLoaded", () => {
+// --------------------
+// YES / NO BUTTON LOGIC
+// --------------------
 
-    // --------------------
-    // ELEMENT REFERENCES
-    // --------------------
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const response = document.getElementById("response");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const response = document.getElementById("response");
 
-    const popupCard = document.getElementById("popupCard");
-    const closeCard = document.getElementById("closeCard");
+// Popup card elements
+const popupCard = document.getElementById("popupCard");
+const closeCard = document.getElementById("closeCard");
 
-    const music = document.getElementById("bgMusic");
-    const musicBtn = document.getElementById("musicBtn");
+// YES button click event
+yesBtn.addEventListener("click", () => {
+    // Show cute response
+    response.innerHTML = "Yeheyyy!! ❤️ See you baby sa February 17–18";
 
-    const slideImg = document.getElementById("slide");
-    const slideText = document.getElementById("slideText");
+    // Show popup card
+    popupCard.style.display = "flex";
 
-    // --------------------
-    // YES BUTTON
-    // --------------------
-    yesBtn.addEventListener("click", () => {
+    // Create heart burst
+    createHeartsBurst();
 
-        response.innerHTML = "Yeheyyy!! ❤️ See you baby sa February 17–18";
-
-        popupCard.style.display = "flex";
-
-        createHeartsBurst();
-
-        // Email launch
-        setTimeout(() => {
-            const email = "fromyourboyfriend@mwamwa.com";
-            const subject = encodeURIComponent("Be my Valentine Date");
-            const body = encodeURIComponent(
-`Hi Luna,
-
-See you sa February 17–18 po 🥰
-
-I’ve been planning something special for us — dinner date hehe.
-
-Happy monthsary babyyy ❤️  
-I really want to make this meet memorable.
-
-Miss you so much 😘
-- Luis`
-            );
-
-            window.location.href =
-                `mailto:${email}?subject=${subject}&body=${body}`;
-        }, 600);
-    });
-
-    // Close popup
-    closeCard.addEventListener("click", () => {
-        popupCard.style.display = "none";
-    });
-
-
-    // --------------------
-    // NO BUTTON CHAOS 😈
-    // --------------------
-    function moveNoButton() {
-        const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-        const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-
-        noBtn.style.position = "absolute";
-        noBtn.style.left = Math.random() * maxX + "px";
-        noBtn.style.top = Math.random() * maxY + "px";
-    }
-
-    function playfulNoText() {
-        const original = noBtn.textContent;
-        noBtn.textContent = "Not so fast 🤣";
-        setTimeout(() => noBtn.textContent = original, 900);
-    }
-
-    noBtn.addEventListener("mouseover", () => {
-        moveNoButton();
-        playfulNoText();
-    });
-
-    noBtn.addEventListener("touchstart", e => {
-        e.preventDefault();
-        moveNoButton();
-        playfulNoText();
-    });
-
-
-    // --------------------
-    // SLIDESHOW
-    // --------------------
-    const slides = [
-        { img: "images/photo1.jpg", text: "Our First Meet - May 30-31, 2025" },
-        { img: "images/photo2.jpg", text: "Your Birthday - July 17-18, 2025" },
-        { img: "images/photo3.jpg", text: "Met tita first time - Nov 22-23, 2025" },
-        { img: "images/photo4.jpg", text: "Tayo na ❤️ - Dec 12-14, 2025" },
-        { img: "images/photo5.jpg", text: "Graduation & Month 1 - Jan 14-16, 2026" }
-    ];
-
-    let index = 0;
-
-    function updateSlide() {
-        slideImg.src = slides[index].img;
-        slideText.textContent = slides[index].text;
-    }
-
-    window.nextSlide = function () {
-        index = (index + 1) % slides.length;
-        updateSlide();
-    }
-
-    window.prevSlide = function () {
-        index = (index - 1 + slides.length) % slides.length;
-        updateSlide();
-    }
-
-    setInterval(window.nextSlide, 10000);
-    updateSlide();
-
-
-    // --------------------
-    // FLOATING HEARTS
-    // --------------------
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = Math.random() * 20 + 10 + "px";
-
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }
-
-    setInterval(createHeart, 400);
-
-    function createHeartsBurst() {
-        for (let i = 0; i < 25; i++) createHeart();
-    }
-
-
-    // --------------------
-    // MUSIC BUTTON (FIXED)
-    // --------------------
-    musicBtn.addEventListener("click", async () => {
-        try {
-            if (music.paused) {
-                await music.play();
-                musicBtn.textContent = "Music ON 🎵";
-                musicBtn.classList.add("active");
-            } else {
-                music.pause();
-                musicBtn.textContent = "Music OFF 🔇";
-                musicBtn.classList.remove("active");
-            }
-        } catch (err) {
-            console.log("Audio blocked:", err);
-            alert("Tap again 🙂 Browser blocked autoplay first time.");
-        }
-    });
-
+    // Open email draft after short delay
+    setTimeout(() => {
+        const email = "fromyourboyfriend@mwamwa.com"; // <-- replace with her email
+        const subject = encodeURIComponent("Be my Valentine Date");
+        const body = encodeURIComponent(
+            "Hi Luna,\n\nSee you sa February 17-18 po, I’ve been planning something special for us… a dinner date hehe🥰\n\nI really wanna spend time with you this month of February, kasi it’s our monthsary too, Happy monthsary, babyyy🥰\n\nkasi I really wanna make this meet super special for us. Can’t wait to see you po and spend some quality time together 😘\n\n\n\nI miss you Luna,\n- Luis"
+        );
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }, 500);
 });
+
+// Close popup card
+closeCard.addEventListener("click", () => {
+    popupCard.style.display = "none";
+});
+
+// --------------------
+// NO BUTTON LOGIC
+// --------------------
+
+function moveNoButton() {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+    const maxX = window.innerWidth - btnWidth - 20; // padding
+    const maxY = window.innerHeight - btnHeight - 20;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function playfulNoText() {
+    const originalText = noBtn.textContent;
+    noBtn.textContent = "Not so fast! 🤣";
+    setTimeout(() => (noBtn.textContent = originalText), 1000);
+}
+
+// Desktop hover event
+noBtn.addEventListener("mouseover", () => {
+    moveNoButton();
+    playfulNoText();
+});
+
+// Mobile touch event
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // prevent scrolling on tap
+    moveNoButton();
+    playfulNoText();
+});
+
+// --------------------
+// SLIDESHOW WITH TEXT
+// --------------------
+
+const slides = [
+    { img: "images/photo1.jpg", text: "Our First Meet - May 30-31, 2025" },
+    { img: "images/photo2.jpg", text: "Your Birthday Celebration - July 17-18, 2025" },
+    { img: "images/photo3.jpg", text: "The day I met tita for the first time. - November 22-23, 2025" },
+    { img: "images/photo4.jpg", text: "The night you said TAYO NA and the celebration of my birthday - December 12-14, 2025 – Feb 17–18" },
+    { img: "images/photo5.jpg", text: "Your graduation photo and our first month together - January 14-16, 2026" }
+];
+
+let index = 0;
+const slideImg = document.getElementById("slide");
+const slideText = document.getElementById("slideText");
+
+function updateSlide() {
+    slideImg.src = slides[index].img;
+    slideText.textContent = slides[index].text;
+}
+
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlide();
+}
+
+function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
+}
+
+// Auto-play slideshow
+setInterval(nextSlide, 10000);
+
+// Initialize first slide
+updateSlide();
+
+// --------------------
+// FLOATING HEARTS
+// --------------------
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+// Continuous floating hearts
+setInterval(createHeart, 400);
+
+// Burst hearts on YES
+function createHeartsBurst() {
+    for (let i = 0; i < 20; i++) createHeart();
+}
+
+// --------------------
+// MUSIC TOGGLE BUTTON
+// --------------------
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+musicBtn.textContent = "Music OFF 🔇";
+
+musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        musicBtn.classList.add("active");
+        musicBtn.textContent = "Music ON 🎵";
+    } else {
+        music.pause();
+        musicBtn.classList.remove("active");
+        musicBtn.textContent = "Music OFF 🔇";
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
