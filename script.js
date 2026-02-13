@@ -8,7 +8,7 @@ const response = document.getElementById("response");
 
 // Sweet message when YES clicked
 yesBtn.addEventListener("click", () => {
-    response.innerHTML = "Yay!! ❤️ I can't wait!";
+    response.innerHTML = "Yeheyyy!! ❤️ see you baby sa February 17";
     createHeartsBurst();
 });
 
@@ -31,7 +31,7 @@ function moveNoButton() {
 // Function to change NO button text temporarily
 function playfulNoText() {
     const originalText = noBtn.textContent;
-    noBtn.textContent = "Not so fast! 💔";
+    noBtn.textContent = "Not so fast! 🤣🤣🤣";
     setTimeout(() => {
         noBtn.textContent = originalText;
     }, 1000); // 1 second
@@ -122,3 +122,4 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
