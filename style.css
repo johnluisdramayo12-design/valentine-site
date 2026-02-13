@@ -1,64 +1,96 @@
 /* Reset basic spacing */
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     text-align: center;
-
-    /* Romantic gradient background */
-    background: linear-gradient(135deg,#ffccd5,#ffe6ea,#ffffff);
+    background: linear-gradient(135deg, #ffdde1, #ffc6d9, #fff0f5);
     overflow-x: hidden;
 }
 
-/* Center hero section */
+/* Hero section */
 .hero {
-    padding: 80px 20px;
+    padding: 100px 20px;
+    position: relative;
 }
 
+/* Title */
 h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #d6336c;
+    text-shadow: 2px 2px 10px rgba(255, 77, 109, 0.5);
+    margin-bottom: 40px;
 }
 
-/* Buttons styling */
+/* Buttons */
 .buttons button {
-    padding: 12px 25px;
+    padding: 15px 30px;
     margin: 15px;
-    font-size: 18px;
+    font-size: 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
+/* YES button */
 #yesBtn {
-    background: #ff4d6d;
+    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
     color: white;
 }
 
 #yesBtn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 15px rgba(255,77,109,0.5);
+}
+
+/* NO button */
+#noBtn {
+    background: #ffe6ee;
+    color: #d6336c;
+}
+
+#noBtn:hover {
     transform: scale(1.1);
 }
 
-#noBtn {
-    background: #dee2e6;
-}
-
-/* Slideshow */
+/* Slideshow Section */
 .slideshow-section {
-    padding: 50px 20px;
+    padding: 60px 20px;
 }
 
+.slideshow-section h2 {
+    font-size: 2rem;
+    color: #d6336c;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px rgba(255,77,109,0.4);
+}
+
+/* Slideshow images */
 .slideshow img {
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
     height: auto;
-    border-radius: 15px;
-    transition: opacity 0.5s ease;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(255,77,109,0.3);
+    transition: opacity 0.7s ease, transform 0.5s ease;
 }
 
+/* Slideshow buttons */
 .controls button {
     margin: 10px;
-    padding: 8px 15px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.controls button:hover {
+    transform: scale(1.1);
 }
 
 /* Floating hearts */
@@ -67,62 +99,62 @@ h1 {
     color: pink;
     font-size: 20px;
     animation: float 6s linear infinite;
+    transform-origin: center;
 }
 
+/* Heart float animation */
 @keyframes float {
-    from {
-        transform: translateY(100vh);
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
         opacity: 1;
     }
-    to {
-        transform: translateY(-10vh);
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
         opacity: 0;
     }
 }
 
-/* Music button */
+/* Music toggle button */
 #musicBtn {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    padding: 8px 12px;
+    top: 15px;
+    right: 15px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #dee2e6;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Active music ON state */
+#musicBtn.active {
+    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+    color: white;
+    box-shadow: 0 8px 15px rgba(255,77,109,0.5);
+}
+
+/* Music button click scale */
+#musicBtn:active {
+    transform: scale(0.95);
 }
 
 /* Mobile responsiveness */
 @media(max-width:600px){
     h1{
-        font-size:1.8rem;
+        font-size:2rem;
     }
-}
-
-/* Music toggle button style */
-#musicBtn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-
-    padding: 10px 18px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-
-    font-weight: bold;
-
-    /* OFF state (default) */
-    background: #dee2e6;
-    color: #333;
-
-    transition: all 0.3s ease;
-}
-
-/* ON state when music playing */
-#musicBtn.active {
-    background: #ff4d6d;
-    color: white;
-    box-shadow: 0 0 10px rgba(255,77,109,0.7);
-}
-
-/* Small click animation */
-#musicBtn:active {
-    transform: scale(0.95);
+    .slideshow img{
+        max-width: 90%;
+    }
+    .buttons button{
+        font-size: 16px;
+        padding: 12px 20px;
+    }
 }
