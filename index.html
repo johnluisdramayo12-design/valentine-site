@@ -19,7 +19,8 @@
         <source src="music/love.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="musicBtn">Play Music 🎵</button>
+    <!-- Music Toggle Button -->
+    <button id="musicBtn"></button>
 
     <!-- MAIN QUESTION -->
     <section class="hero">
@@ -50,8 +51,34 @@
     <!-- Script -->
     <script src="script.js"></script>
 
+    <!-- Improved NO button mobile support -->
+    <script>
+        const noBtn = document.getElementById("noBtn");
+
+        function moveNoButton() {
+            // Calculate random position within screen boundaries
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            const maxX = window.innerWidth - btnWidth - 20; // 20px padding
+            const maxY = window.innerHeight - btnHeight - 20;
+
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // For desktop hover
+        noBtn.addEventListener("mouseover", moveNoButton);
+
+        // For mobile touch devices
+        noBtn.addEventListener("touchstart", (e) => {
+            e.preventDefault(); // prevent default touch behavior
+            moveNoButton();
+        });
+    </script>
+
 </body>
 </html>
-
-
-
