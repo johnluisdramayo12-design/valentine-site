@@ -1,4 +1,6 @@
-/* Reset basic spacing */
+/* ===================== */
+/* GLOBAL RESET / BASE */
+/* ===================== */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
@@ -7,13 +9,14 @@ body {
     overflow-x: hidden;
 }
 
-/* Hero section */
+/* ===================== */
+/* HERO SECTION */
+/* ===================== */
 .hero {
     padding: 100px 20px;
     position: relative;
 }
 
-/* Title */
 h1 {
     font-size: 3rem;
     color: #d6336c;
@@ -21,7 +24,15 @@ h1 {
     margin-bottom: 40px;
 }
 
-/* Buttons */
+#response {
+    color: #d6336c;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* ===================== */
+/* BUTTONS */
+/* ===================== */
 .buttons button {
     padding: 15px 30px;
     margin: 15px;
@@ -29,34 +40,31 @@ h1 {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    position: relative; /* for desktop NO movement */
 }
 
-/* YES button */
+/* YES */
 #yesBtn {
     background: linear-gradient(135deg, #ff4d6d, #ff85a2);
     color: white;
 }
-
 #yesBtn:hover {
     transform: scale(1.15);
-    box-shadow: 0 8px 15px rgba(255,77,109,0.5);
 }
 
-/* NO button */
+/* NO */
 #noBtn {
     background: #ffe6ee;
     color: #d6336c;
-    transition: all 0.3s ease;
 }
-
 #noBtn:hover {
     transform: scale(1.1);
 }
 
-/* Slideshow Section */
+/* ===================== */
+/* SLIDESHOW */
+/* ===================== */
 .slideshow-section {
     padding: 60px 20px;
 }
@@ -65,35 +73,29 @@ h1 {
     font-size: 2rem;
     color: #d6336c;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 5px rgba(255,77,109,0.4);
 }
 
-/* Slideshow container */
 .slideshow {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Slideshow images */
 .slideshow img {
     width: 90%;
     max-width: 450px;
-    height: auto;
     border-radius: 25px;
     box-shadow: 0 10px 20px rgba(255,77,109,0.3);
-    transition: opacity 0.7s ease, transform 0.5s ease;
+    transition: opacity 0.7s ease;
 }
 
-/* Slide text below image */
 .slide-text {
     font-size: 1.2rem;
     color: #d6336c;
     margin-top: 10px;
-    text-shadow: 1px 1px 3px rgba(255,77,109,0.4);
 }
 
-/* Slideshow navigation buttons */
+/* NAV BUTTONS */
 .controls button {
     margin: 10px;
     padding: 10px 20px;
@@ -103,38 +105,36 @@ h1 {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
-
 .controls button:hover {
     transform: scale(1.1);
 }
 
-/* Floating hearts */
+/* ===================== */
+/* FLOATING HEARTS */
+/* ===================== */
 .heart {
     position: fixed;
     color: pink;
-    font-size: 20px;
     animation: float 6s linear infinite;
     transform-origin: center;
 }
 
-/* Heart float animation */
 @keyframes float {
     0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(100vh);
         opacity: 0;
     }
-    50% {
-        opacity: 1;
-    }
+    50% { opacity: 1; }
     100% {
-        transform: translateY(-10vh) rotate(360deg);
+        transform: translateY(-10vh);
         opacity: 0;
     }
 }
 
-/* Music toggle button */
+/* ===================== */
+/* MUSIC BUTTON */
+/* ===================== */
 #musicBtn {
     position: fixed;
     top: 15px;
@@ -146,122 +146,72 @@ h1 {
     font-weight: bold;
     background: #dee2e6;
     color: #333;
-    transition: all 0.3s ease;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
-/* Active music ON state */
 #musicBtn.active {
     background: linear-gradient(135deg, #ff4d6d, #ff85a2);
     color: white;
-    box-shadow: 0 8px 15px rgba(255,77,109,0.5);
 }
 
-#musicBtn:active {
-    transform: scale(0.95);
-}
-
-/* ================== */
-/* Popup Valentine Card */
-/* ================== */
-
+/* ===================== */
+/* POPUP CARD */
+/* ===================== */
 #popupCard {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.5);
-    display: none; /* initially hidden */
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.5s ease forwards;
+    z-index: 999;
 }
 
-#popupContent {
+.card-content {
     background: linear-gradient(135deg, #ffdde1, #ffc6d9);
     padding: 40px 30px;
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(255,77,109,0.5);
     max-width: 400px;
     width: 90%;
-    text-align: center;
-    position: relative;
-    animation: scaleUp 0.5s ease forwards;
+    animation: scaleUp .4s ease;
 }
 
-#popupContent h2 {
+.card-content h2 {
     color: #d6336c;
-    margin-bottom: 20px;
 }
 
-#popupContent p {
+.card-content p {
     color: #d6336c;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
 }
 
 #closeCard {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    color: #d6336c;
-    background: none;
+    margin-top: 20px;
+    padding: 8px 18px;
+    border-radius: 20px;
     border: none;
+    background: #ff4d6d;
+    color: white;
     cursor: pointer;
 }
 
-/* Popup animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
+/* Animation */
 @keyframes scaleUp {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {transform: scale(.7); opacity:0;}
+    to {transform: scale(1); opacity:1;}
 }
 
-/* ================== */
-/* Mobile Responsiveness */
-/* ================== */
+/* ===================== */
+/* MOBILE */
+/* ===================== */
 @media(max-width:600px){
-    h1 {
-        font-size:2rem;
-    }
 
-    .slideshow img {
-        max-width: 90%;
-    }
+    h1 { font-size:2rem; }
 
     .buttons button {
         font-size: 16px;
         padding: 12px 20px;
     }
 
-    .slide-text {
-        font-size: 1rem;
-    }
-
-    /* Make NO button absolute for better mobile movement */
-    #noBtn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    #popupContent {
-        padding: 30px 20px;
-    }
-
-    #popupContent h2 {
-        font-size: 1.5rem;
-    }
-
-    #popupContent p {
-        font-size: 1rem;
-    }
+    .slide-text { font-size:1rem; }
 }
