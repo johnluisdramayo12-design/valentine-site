@@ -28,7 +28,7 @@ yesBtn.addEventListener("click", () => {
         const body = encodeURIComponent(
             "Hi Luna,\n\nSee you sa February 17-18 po, I’ve been planning something special for us… a dinner date hehe🥰\n\nI really wanna spend time with you this month of February, kasi it’s our monthsary too, Happy monthsary, babyyy🥰\n\nkasi I really wanna make this meet super special for us. Can’t wait to see you po and spend some quality time together 😘\n\nI miss you Luna, -Luis"
         );
-        window.location.href = `mailfrom:${email}?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }, 500);
 });
 
@@ -155,6 +155,7 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
 
 
