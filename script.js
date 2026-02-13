@@ -8,7 +8,7 @@ const response = document.getElementById("response");
 
 // Sweet message when YES clicked
 yesBtn.addEventListener("click", () => {
-    response.innerHTML = "Yeheyyy!! ❤️ see you baby sa February 17";
+    response.innerHTML = "Yeheyyy!! ❤️ see you baby sa February 17–18";
     createHeartsBurst();
 });
 
@@ -31,10 +31,10 @@ function moveNoButton() {
 // Function to change NO button text temporarily
 function playfulNoText() {
     const originalText = noBtn.textContent;
-    noBtn.textContent = "Not so fast! 🤣🤣🤣";
+    noBtn.textContent = "Not so fast! 🤣";
     setTimeout(() => {
         noBtn.textContent = originalText;
-    }, 1000); // 1 second
+    }, 1000);
 }
 
 // Desktop hover event
@@ -51,32 +51,59 @@ noBtn.addEventListener("touchstart", (e) => {
 });
 
 // --------------------
-// SLIDESHOW
+// SLIDESHOW WITH TEXT
 // --------------------
 
-const images = [
-    "images/photo1.jpg",
-    "images/photo2.jpg",
-    "images/photo3.jpg",
-    "images/photo4.jpg",
-    "images/photo5.jpg"
+const slides = [
+    {
+        img: "images/photo1.jpg",
+        text: "Our sweet moment 💖 – Feb 17–18"
+    },
+    {
+        img: "images/photo2.jpg",
+        text: "Love and laughter 😊 – Feb 17–18"
+    },
+    {
+        img: "images/photo3.jpg",
+        text: "Memories together 🌸 – Feb 17–18"
+    },
+    {
+        img: "images/photo4.jpg",
+        text: "Just us two 💕 – Feb 17–18"
+    },
+    {
+        img: "images/photo5.jpg",
+        text: "Forever in my heart ❤️ – Feb 17–18"
+    }
 ];
 
 let index = 0;
-const slide = document.getElementById("slide");
+const slideImg = document.getElementById("slide");
+const slideText = document.getElementById("slideText");
 
-function nextSlide() {
-    index = (index + 1) % images.length;
-    slide.src = images[index];
+// Update slide image and text
+function updateSlide() {
+    slideImg.src = slides[index].img;
+    slideText.textContent = slides[index].text;
 }
 
+// Next image
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlide();
+}
+
+// Previous image
 function prevSlide() {
-    index = (index - 1 + images.length) % images.length;
-    slide.src = images[index];
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
 }
 
 // Auto-play every 3 seconds
 setInterval(nextSlide, 3000);
+
+// Initialize first slide
+updateSlide();
 
 // --------------------
 // FLOATING HEARTS
@@ -98,6 +125,7 @@ function createHeart() {
 // Continuous floating hearts
 setInterval(createHeart, 400);
 
+// Burst effect on YES click
 function createHeartsBurst() {
     for (let i = 0; i < 20; i++) createHeart();
 }
@@ -122,4 +150,3 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
-
