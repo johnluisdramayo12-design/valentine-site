@@ -12,11 +12,42 @@ yesBtn.addEventListener("click", () => {
     createHeartsBurst();
 });
 
-// Move NO button randomly on hover
+// Function to move NO button randomly within viewport
+function moveNoButton() {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - btnWidth - 20; // padding
+    const maxY = window.innerHeight - btnHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+// Function to change NO button text temporarily
+function playfulNoText() {
+    const originalText = noBtn.textContent;
+    noBtn.textContent = "Not so fast! 💔";
+    setTimeout(() => {
+        noBtn.textContent = originalText;
+    }, 1000); // 1 second
+}
+
+// Desktop hover event
 noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * 200 - 100; // random x offset
-    const y = Math.random() * 200 - 100; // random y offset
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    moveNoButton();
+    playfulNoText();
+});
+
+// Mobile touch event
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // prevent scrolling on tap
+    moveNoButton();
+    playfulNoText();
 });
 
 // --------------------
@@ -34,51 +65,41 @@ const images = [
 let index = 0;
 const slide = document.getElementById("slide");
 
-// Show next image
 function nextSlide() {
     index = (index + 1) % images.length;
     slide.src = images[index];
 }
 
-// Show previous image
 function prevSlide() {
     index = (index - 1 + images.length) % images.length;
     slide.src = images[index];
 }
 
-// Auto-play slideshow every 3 seconds
+// Auto-play every 3 seconds
 setInterval(nextSlide, 3000);
 
 // --------------------
 // FLOATING HEARTS
 // --------------------
 
-// Create a single heart
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "❤️";
 
-    // Random horizontal position and size
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 20 + 10 + "px";
 
     document.body.appendChild(heart);
 
-    // Remove heart after 6 seconds
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+    setTimeout(() => heart.remove(), 6000);
 }
 
 // Continuous floating hearts
 setInterval(createHeart, 400);
 
-// Burst of hearts on YES click
 function createHeartsBurst() {
-    for (let i = 0; i < 20; i++) {
-        createHeart();
-    }
+    for (let i = 0; i < 20; i++) createHeart();
 }
 
 // --------------------
@@ -88,10 +109,8 @@ function createHeartsBurst() {
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
-// Initialize button state
 musicBtn.textContent = "Music OFF 🔇";
 
-// Toggle music ON/OFF and update button style
 musicBtn.addEventListener("click", () => {
     if (music.paused) {
         music.play();
