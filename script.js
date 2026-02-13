@@ -26,7 +26,7 @@ yesBtn.addEventListener("click", () => {
         const email = "fromyourboyfriend@mwamwa.com"; // <-- replace with her email
         const subject = encodeURIComponent("Be my Valentine Date");
         const body = encodeURIComponent(
-            "Hi Luna,\n\nSee you sa February 17-18 po, I’ve been planning something special for us… a dinner date hehe🥰\n\nI really wanna spend time with you this month of February, kasi it’s our monthsary too, Happy monthsary, babyyy🥰\n\nkasi I really wanna make this meet super special for us. Can’t wait to see you po and spend some quality time together 😘\n\n\n\nI miss you Luna,\n-Luis"
+            "Hi Luna,\n\nSee you sa February 17-18 po, I’ve been planning something special for us… a dinner date hehe🥰\n\nI really wanna spend time with you this month of February, kasi it’s our monthsary too, Happy monthsary, babyyy🥰\n\nkasi I really wanna make this meet super special for us. Can’t wait to see you po and spend some quality time together 😘\n\n\n\nI miss you Luna,\n- Luis"
         );
         window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }, 500);
@@ -78,7 +78,7 @@ noBtn.addEventListener("touchstart", (e) => {
 // --------------------
 
 const slides = [
-    { img: "images/photo1.jpg", text: "Our First Meet - May 30-31, 2025 Total Hours Spent: 33hrs" },
+    { img: "images/photo1.jpg", text: "Our First Meet - May 30-31, 2025" },
     { img: "images/photo2.jpg", text: "Your Birthday Celebration - July 17-18, 2025" },
     { img: "images/photo3.jpg", text: "The day I met tita for the first time. - November 22-23, 2025" },
     { img: "images/photo4.jpg", text: "The night you said TAYO NA and the celebration of my birthday - December 12-14, 2025 – Feb 17–18" },
@@ -155,6 +155,7 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
 
 
