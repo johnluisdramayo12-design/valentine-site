@@ -31,7 +31,7 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    position: relative; /* Keep relative for desktop */
+    position: relative; /* for desktop NO movement */
 }
 
 /* YES button */
@@ -65,8 +65,15 @@ h1 {
 .slideshow-section h2 {
     font-size: 2rem;
     color: #d6336c;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-shadow: 1px 1px 5px rgba(255,77,109,0.4);
+}
+
+/* Slideshow container */
+.slideshow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Slideshow images */
@@ -77,6 +84,14 @@ h1 {
     border-radius: 25px;
     box-shadow: 0 10px 20px rgba(255,77,109,0.3);
     transition: opacity 0.7s ease, transform 0.5s ease;
+}
+
+/* Slide text under image */
+.slide-text {
+    font-size: 1.2rem;
+    color: #d6336c;
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(255,77,109,0.4);
 }
 
 /* Slideshow buttons */
@@ -150,21 +165,24 @@ h1 {
 
 /* Mobile responsiveness */
 @media(max-width:600px){
-    h1{
+    h1 {
         font-size:2rem;
     }
-    .slideshow img{
+    .slideshow img {
         max-width: 90%;
     }
-    .buttons button{
+    .buttons button {
         font-size: 16px;
         padding: 12px 20px;
+    }
+    .slide-text {
+        font-size: 1rem;
     }
 
     /* Make NO button absolute for better mobile movement */
     #noBtn {
         position: absolute;
-        top: 50%;  /* start near center */
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
