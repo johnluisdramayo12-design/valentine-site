@@ -6,10 +6,21 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const response = document.getElementById("response");
 
-// Sweet message when YES clicked
+// YES button click event
 yesBtn.addEventListener("click", () => {
-    response.innerHTML = "Yeheyyy!! ❤️ see you baby sa February 17–18";
+    // Show cute response on page
+    response.innerHTML = "Yeheyyy!! ❤️ See you baby sa February 17–18";
+    
+    // Create heart burst
     createHeartsBurst();
+
+    // Open email draft with pre-filled content
+    const email = "yourgirlfriend@example.com"; // <-- replace with her email
+    const subject = encodeURIComponent("My Valentine Date 😍");
+    const body = encodeURIComponent(
+        "Hi baby 💖,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nLove, [Your Name]"
+    );
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 });
 
 // Function to move NO button randomly within viewport
@@ -55,26 +66,11 @@ noBtn.addEventListener("touchstart", (e) => {
 // --------------------
 
 const slides = [
-    {
-        img: "images/photo1.jpg",
-        text: "Our sweet moment 💖 – Feb 17–18"
-    },
-    {
-        img: "images/photo2.jpg",
-        text: "Love and laughter 😊 – Feb 17–18"
-    },
-    {
-        img: "images/photo3.jpg",
-        text: "Memories together 🌸 – Feb 17–18"
-    },
-    {
-        img: "images/photo4.jpg",
-        text: "Just us two 💕 – Feb 17–18"
-    },
-    {
-        img: "images/photo5.jpg",
-        text: "Forever in my heart ❤️ – Feb 17–18"
-    }
+    { img: "images/photo1.jpg", text: "Our sweet moment 💖 – Feb 17–18" },
+    { img: "images/photo2.jpg", text: "Love and laughter 😊 – Feb 17–18" },
+    { img: "images/photo3.jpg", text: "Memories together 🌸 – Feb 17–18" },
+    { img: "images/photo4.jpg", text: "Just us two 💕 – Feb 17–18" },
+    { img: "images/photo5.jpg", text: "Forever in my heart ❤️ – Feb 17–18" }
 ];
 
 let index = 0;
@@ -87,13 +83,13 @@ function updateSlide() {
     slideText.textContent = slides[index].text;
 }
 
-// Next image
+// Next slide
 function nextSlide() {
     index = (index + 1) % slides.length;
     updateSlide();
 }
 
-// Previous image
+// Previous slide
 function prevSlide() {
     index = (index - 1 + slides.length) % slides.length;
     updateSlide();
