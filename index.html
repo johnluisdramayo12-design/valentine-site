@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine ❤️</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating hearts container -->
+    <div id="hearts-container"></div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="music/love.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicBtn">Play Music 🎵</button>
+
+    <!-- MAIN QUESTION -->
+    <section class="hero">
+        <h1>Will you be my Valentine?</h1>
+
+        <div class="buttons">
+            <button id="yesBtn">YES ❤️</button>
+            <button id="noBtn">NO 💔</button>
+        </div>
+
+        <p id="response"></p>
+    </section>
+
+    <!-- SLIDESHOW -->
+    <section class="slideshow-section">
+        <h2>Our Memories 💕</h2>
+
+        <div class="slideshow">
+            <img id="slide" src="images/photo1.jpg" alt="memory">
+
+            <div class="controls">
+                <button onclick="prevSlide()">⬅ Prev</button>
+                <button onclick="nextSlide()">Next ➡</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>

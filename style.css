@@ -1,0 +1,96 @@
+/* Reset basic spacing */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
+    /* Romantic gradient background */
+    background: linear-gradient(135deg,#ffccd5,#ffe6ea,#ffffff);
+    overflow-x: hidden;
+}
+
+/* Center hero section */
+.hero {
+    padding: 80px 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #d6336c;
+}
+
+/* Buttons styling */
+.buttons button {
+    padding: 12px 25px;
+    margin: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background: #dee2e6;
+}
+
+/* Slideshow */
+.slideshow-section {
+    padding: 50px 20px;
+}
+
+.slideshow img {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 15px;
+    transition: opacity 0.5s ease;
+}
+
+.controls button {
+    margin: 10px;
+    padding: 8px 15px;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    color: pink;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+/* Music button */
+#musicBtn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+}
+
+/* Mobile responsiveness */
+@media(max-width:600px){
+    h1{
+        font-size:1.8rem;
+    }
+}
