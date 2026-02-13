@@ -94,3 +94,35 @@ h1 {
         font-size:1.8rem;
     }
 }
+
+/* Music toggle button style */
+#musicBtn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+
+    padding: 10px 18px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+
+    font-weight: bold;
+
+    /* OFF state (default) */
+    background: #dee2e6;
+    color: #333;
+
+    transition: all 0.3s ease;
+}
+
+/* ON state when music playing */
+#musicBtn.active {
+    background: #ff4d6d;
+    color: white;
+    box-shadow: 0 0 10px rgba(255,77,109,0.7);
+}
+
+/* Small click animation */
+#musicBtn:active {
+    transform: scale(0.95);
+}
