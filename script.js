@@ -80,9 +80,9 @@ noBtn.addEventListener("touchstart", (e) => {
 const slides = [
     { img: "images/photo1.jpg", text: "Our First Meet - May 30-31, 2025 Total Hours Spent: 33hrs" },
     { img: "images/photo2.jpg", text: "Your Birthday Celebration - July 17-18, 2025" },
-    { img: "images/photo3.jpg", text: "My first time seeing your Nanay - November 22-23, 2025" },
-    { img: "images/photo4.jpg", text: "My Birthday Celebration and the night that you said yes - December 12-14, 2025 – Feb 17–18" },
-    { img: "images/photo5.jpg", text: "Our First Monthsary and your Graduation Picture - January 14-16, 2026" }
+    { img: "images/photo3.jpg", text: "The day I met tita for the first time. - November 22-23, 2025" },
+    { img: "images/photo4.jpg", text: "The night you said TAYO NA and the celebration of my birthday - December 12-14, 2025 – Feb 17–18" },
+    { img: "images/photo5.jpg", text: "Your graduation photo and our first month together - January 14-16, 2026" }
 ];
 
 let index = 0;
@@ -155,6 +155,7 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
 
 
