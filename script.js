@@ -24,9 +24,9 @@ yesBtn.addEventListener("click", () => {
     // Open email draft after short delay
     setTimeout(() => {
         const email = "fromyourboyfriend@baby.com"; // <-- replace with her email
-        const subject = encodeURIComponent("Be my Valentine Date 😍");
+        const subject = encodeURIComponent("Be my Valentine Date");
         const body = encodeURIComponent(
-            "Hi Luna,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nLove, [Your Name]"
+            "Hi Luna,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nI miss you Luna, -Luis"
         );
         window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }, 500);
@@ -155,4 +155,5 @@ musicBtn.addEventListener("click", () => {
         musicBtn.textContent = "Music OFF 🔇";
     }
 });
+
 
