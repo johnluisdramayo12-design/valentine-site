@@ -31,7 +31,7 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    position: relative; /* for desktop NO movement */
+    position: relative; /* desktop NO movement */
 }
 
 /* YES button */
@@ -52,7 +52,6 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Hover effect for desktop */
 #noBtn:hover {
     transform: scale(1.1);
 }
@@ -86,7 +85,7 @@ h1 {
     transition: opacity 0.7s ease, transform 0.5s ease;
 }
 
-/* Slide text under image */
+/* Slide text below image */
 .slide-text {
     font-size: 1.2rem;
     color: #d6336c;
@@ -94,7 +93,7 @@ h1 {
     text-shadow: 1px 1px 3px rgba(255,77,109,0.4);
 }
 
-/* Slideshow buttons */
+/* Slideshow navigation buttons */
 .controls button {
     margin: 10px;
     padding: 10px 20px;
@@ -168,13 +167,16 @@ h1 {
     h1 {
         font-size:2rem;
     }
+
     .slideshow img {
         max-width: 90%;
     }
+
     .buttons button {
         font-size: 16px;
         padding: 12px 20px;
     }
+
     .slide-text {
         font-size: 1rem;
     }
