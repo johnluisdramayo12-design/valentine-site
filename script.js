@@ -83,18 +83,30 @@ function createHeartsBurst(){
 
 
 // --------------------
-// MUSIC CONTROL
+// MUSIC TOGGLE BUTTON
 // --------------------
 
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
-musicBtn.onclick = () => {
-    if(music.paused){
+// Start in OFF state
+musicBtn.textContent = "Music OFF 🔇";
+
+musicBtn.addEventListener("click", () => {
+
+    if (music.paused) {
         music.play();
-        musicBtn.textContent = "Pause Music ⏸";
-    }else{
+
+        // Toggle ON visuals
+        musicBtn.classList.add("active");
+        musicBtn.textContent = "Music ON 🎵";
+
+    } else {
         music.pause();
-        musicBtn.textContent = "Play Music 🎵";
+
+        // Toggle OFF visuals
+        musicBtn.classList.remove("active");
+        musicBtn.textContent = "Music OFF 🔇";
     }
-};
+
+});
