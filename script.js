@@ -1,130 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will you Be My Valentine?</title>
+// --------------------
+// YES / NO BUTTON LOGIC
+// --------------------
 
-    <!-- Link CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const response = document.getElementById("response");
 
-<body>
+// Popup card elements
+const popupCard = document.getElementById("popupCard");
+const closeCard = document.getElementById("closeCard");
 
-    <!-- Floating hearts container -->
-    <div id="hearts-container"></div>
+// YES button click event
+yesBtn.addEventListener("click", () => {
+    // Show cute response
+    response.innerHTML = "Yeheyyy!! ❤️ See you baby sa February 17–18";
 
-    <!-- Background Music -->
-    <audio id="bgMusic" loop>
-        <source src="music/love.mp3" type="audio/mpeg">
-    </audio>
+    // Show popup card
+    popupCard.style.display = "flex";
 
-    <!-- Music Toggle Button -->
-    <button id="musicBtn"></button>
+    // Create heart burst
+    createHeartsBurst();
 
-    <!-- MAIN QUESTION -->
-    <section class="hero">
-        <h1>Will you be my Valentine?</h1>
+    // Open email draft after short delay
+    setTimeout(() => {
+        const email = "yourgirlfriend@example.com"; // <-- replace with her email
+        const subject = encodeURIComponent("My Valentine Date 😍");
+        const body = encodeURIComponent(
+            "Hi baby 💖,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nLove, [Your Name]"
+        );
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }, 500);
+});
 
-        <div class="buttons">
-            <button id="yesBtn">YES 🥰</button>
-            <button id="noBtn">NO 😝</button>
-        </div>
+// Close popup card
+closeCard.addEventListener("click", () => {
+    popupCard.style.display = "none";
+});
 
-        <p id="response"></p>
-    </section>
+// --------------------
+// NO BUTTON LOGIC
+// --------------------
 
-    <!-- SLIDESHOW -->
-    <section class="slideshow-section">
-        <h2>With My Baby 🥰</h2>
+function moveNoButton() {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+    const maxX = window.innerWidth - btnWidth - 20; // padding
+    const maxY = window.innerHeight - btnHeight - 20;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-        <div class="slideshow">
-            <img id="slide" src="images/photo1.jpg" alt="memory">
-            <p id="slideText" class="slide-text">Our sweet moment 💖 – Feb 17–18</p>
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
 
-            <div class="controls">
-                <button onclick="prevSlide()">⬅ Prev</button>
-                <button onclick="nextSlide()">Next ➡</button>
-            </div>
-        </div>
-    </section>
+function playfulNoText() {
+    const originalText = noBtn.textContent;
+    noBtn.textContent = "Not so fast! 🤣";
+    setTimeout(() => (noBtn.textContent = originalText), 1000);
+}
 
-    <!-- POP-UP CARD -->
-    <div id="popupCard" class="popup-card">
-        <div class="card-content">
-            <h2>💌 Surprise! 💌</h2>
-            <p>Hi baby 💖,<br>Excited to see you on February 17–18!<br>Can't wait for our Valentine date ❤️</p>
-            <button id="closeCard">Close</button>
-        </div>
-    </div>
+// Desktop hover event
+noBtn.addEventListener("mouseover", () => {
+    moveNoButton();
+    playfulNoText();
+});
 
-    <!-- Script -->
-    <script src="script.js"></script>
+// Mobile touch event
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // prevent scrolling on tap
+    moveNoButton();
+    playfulNoText();
+});
 
-    <!-- NO button movement & YES pop-up -->
-    <script>
-        const noBtn = document.getElementById("noBtn");
-        const yesBtn = document.getElementById("yesBtn");
-        const response = document.getElementById("response");
-        const popupCard = document.getElementById("popupCard");
-        const closeCard = document.getElementById("closeCard");
+// --------------------
+// SLIDESHOW WITH TEXT
+// --------------------
 
-        // NO button movement
-        function moveNoButton() {
-            const btnWidth = noBtn.offsetWidth;
-            const btnHeight = noBtn.offsetHeight;
-            const maxX = window.innerWidth - btnWidth - 20;
-            const maxY = window.innerHeight - btnHeight - 20;
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        }
+const slides = [
+    { img: "images/photo1.jpg", text: "Our sweet moment 💖 – Feb 17–18" },
+    { img: "images/photo2.jpg", text: "Love and laughter 😊 – Feb 17–18" },
+    { img: "images/photo3.jpg", text: "Memories together 🌸 – Feb 17–18" },
+    { img: "images/photo4.jpg", text: "Just us two 💕 – Feb 17–18" },
+    { img: "images/photo5.jpg", text: "Forever in my heart ❤️ – Feb 17–18" }
+];
 
-        function playfulNoText() {
-            const originalText = noBtn.textContent;
-            noBtn.textContent = "Not so fast! 🤣";
-            setTimeout(() => noBtn.textContent = originalText, 1000);
-        }
+let index = 0;
+const slideImg = document.getElementById("slide");
+const slideText = document.getElementById("slideText");
 
-        noBtn.addEventListener("mouseover", () => {
-            moveNoButton();
-            playfulNoText();
-        });
+function updateSlide() {
+    slideImg.src = slides[index].img;
+    slideText.textContent = slides[index].text;
+}
 
-        noBtn.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            moveNoButton();
-            playfulNoText();
-        });
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlide();
+}
 
-        // YES button: popup + email + hearts
-        yesBtn.addEventListener("click", () => {
-            response.innerHTML = "Yeheyyy!! ❤️ See you baby sa February 17–18";
+function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
+}
 
-            // Show popup card
-            popupCard.style.display = "flex";
+// Auto-play slideshow
+setInterval(nextSlide, 3000);
 
-            // Create heart burst
-            createHeartsBurst();
+// Initialize first slide
+updateSlide();
 
-            // Open email draft after short delay
-            setTimeout(() => {
-                const email = "yourgirlfriend@example.com"; // replace with her email
-                const subject = encodeURIComponent("My Valentine Date 😍");
-                const body = encodeURIComponent(
-                    "Hi baby 💖,\n\nExcited to see you on February 17–18! Can't wait for our Valentine date ❤️\n\nLove, [Your Name]"
-                );
-                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-            }, 500);
-        });
+// --------------------
+// FLOATING HEARTS
+// --------------------
 
-        // Close popup card
-        closeCard.addEventListener("click", () => {
-            popupCard.style.display = "none";
-        });
-    </script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
 
-</body>
-</html>
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+// Continuous floating hearts
+setInterval(createHeart, 400);
+
+// Burst hearts on YES
+function createHeartsBurst() {
+    for (let i = 0; i < 20; i++) createHeart();
+}
+
+// --------------------
+// MUSIC TOGGLE BUTTON
+// --------------------
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+musicBtn.textContent = "Music OFF 🔇";
+
+musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        musicBtn.classList.add("active");
+        musicBtn.textContent = "Music ON 🎵";
+    } else {
+        music.pause();
+        musicBtn.classList.remove("active");
+        musicBtn.textContent = "Music OFF 🔇";
+    }
+});
