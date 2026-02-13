@@ -3,6 +3,7 @@ valentine-site
 ├── style.css
 ├── script.js
 ├── music/
+    ├── love.mp3
 ├── images/
 │   ├── photo1.jpg
 │   ├── photo2.jpg
