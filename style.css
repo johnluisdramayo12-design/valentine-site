@@ -31,6 +31,7 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    position: relative; /* Keep relative for desktop */
 }
 
 /* YES button */
@@ -48,8 +49,10 @@ h1 {
 #noBtn {
     background: #ffe6ee;
     color: #d6336c;
+    transition: all 0.3s ease;
 }
 
+/* Hover effect for desktop */
 #noBtn:hover {
     transform: scale(1.1);
 }
@@ -156,5 +159,13 @@ h1 {
     .buttons button{
         font-size: 16px;
         padding: 12px 20px;
+    }
+
+    /* Make NO button absolute for better mobile movement */
+    #noBtn {
+        position: absolute;
+        top: 50%;  /* start near center */
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
